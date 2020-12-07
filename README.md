@@ -1,5 +1,6 @@
 # Trajectory Modelling
-Codes for Trajectory Modelling Paper 
+_Codes_ for **Trajectory Modelling** Paper. Clustering of longitudinal prediction scores from GBM algorithms. 
+Package used: 
 
 ## 1. Introduction
 
