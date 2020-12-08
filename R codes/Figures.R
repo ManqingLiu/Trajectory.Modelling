@@ -3,6 +3,8 @@
 library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
+library(fdapace)
+library(EMCluster)
 
 theme_Publication <- function(base_size=14, base_family="helvetica") {
   library(grid)
@@ -110,8 +112,6 @@ grid.arrange(fig1a, fig1b,nrow=1)
 # Figure 1C. Eigenfunctions of FPC1
 # Figure 1D. Eigenfunction of FPC2
 
-library(fdapace)
-
 fittedY <- fitted(fpcaOBJ, ciOptns = list(alpha=0.05), cvgMethod = 'band')
 workGrid <- fpcaOBJ$workGrid
 
@@ -142,7 +142,6 @@ grid.arrange(fig1c, fig1d,nrow=1)
 # Figure 1E. Representative individual patient with maximal FPC score for FPC1 among 1st cluster with >= 10 encounters
 # Figure 1F. Representative individual patient with maximal FPC score for FPC2 among 2nd cluster with >= 10 encounters
 
-
 cvgUpper <- fittedY$cvgUpper
 cvgLower <- fittedY$cvgLower
 
@@ -151,8 +150,6 @@ fig1e <- as.data.frame(cbind(workGrid, fittedY$fitted[1611,], cvgUpper[1611,], c
 
 fig1f <- as.data.frame(cbind(workGrid, fittedY$fitted[988,], cvgUpper[988,], cvgLower[988,],
                              fpcaOBJ$inputData$Lt[[988]],fpcaOBJ$inputData$Ly[[988]]))
-
-
 
 
 fig1E <- ggplot() + 
@@ -181,7 +178,6 @@ grid.arrange(fig1E, fig1F,nrow=1)
 
 
 # Figure 1G. Validation plot of FPC1 vs. FPC2
-
 set.seed(152)
 train <- pred %>% 
   group_by(PAT_ID) %>% 
@@ -190,27 +186,15 @@ train <- pred %>%
   left_join(pred)
 
 test <- anti_join(pred, train)
-
-library(fdapace)
-library(EMCluster)
-
 train <- train[with(train, order(PAT_ID, interval, decreasing = c(FALSE, FALSE))),]
-
 train_fpca <- MakeFPCAInputs(train$PAT_ID, train$interval, train$prediction_score)
-
 tr <- FPCA(train_fpca$Ly, train_fpca$Lt, list(dataType='Sparse', plot = FALSE, methodMuCovEst = 'smooth'))
-
 tr_fpc <- tr$xiEst[,1:2]
-
 test <- test[with(test, order(PAT_ID, interval, decreasing = c(FALSE, FALSE))),]
-
 test_fpca <- MakeFPCAInputs(test$PAT_ID, test$interval, test$prediction_score)
-
 test_fpc <- predict(tr, test_fpca$Ly, test_fpca$Lt, K = 7, methodMuCovEst = 'smooth')
-
 tr_fpc <- as.data.frame(tr_fpc)
 test_fpc <- as.data.frame(test_fpc)
-
 tr_fpc$type = "Training set (N = 2460)"
 tr_fpc$lab = 1
 test_fpc$type = "Validation set (N = 820)"
@@ -236,24 +220,18 @@ load(file = "bl_eol.Rdata")
 
 cols <- c('Cancer', 'race','cluster','treat_loc','female','marital_status','elixhauser_cat','stage',
           'year_death','Insurance','age_cat','InpatientDeath','enroll','IcuLast30Days','ChemoLast14Days')
-
 bl_eol[cols] <- lapply(bl_eol[cols], factor)
-
 vars <- c("cluster",'age_cat','female','race','marital_status','Insurance','elixhauser_cat',
           'stage','year_death','treat_loc','Cancer','InpatientDeath','enroll','IcuLast30Days','ChemoLast14Days')
-
 keep <- bl_eol[vars]
-
 completeD2 = list()
 for (i in 1:50) {
   completeD2[[i]] <- cbind(completeD[[i]], keep)
 }
-
 for (i in 1:50) {
   completeD2[[i]]$ECOG_strict_c <- with(completeD2[[i]], ifelse(ECOG_strict == 0 | ECOG_strict == 1, "0-1", "2+"))
   completeD2[[i]]$ECOG_strict_c <- as.factor(completeD2[[i]]$ECOG_strict_c)
 }
-
 
 ### 3.2.1 Inpatient death 
 modelFit = list()
@@ -262,16 +240,13 @@ for (i in 1:50) {
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
 
-
 sum <- summary(pool(modelFit))
 
 sum2 <- sum[2, ]
 est1 <- sum2[,1]
 low_ci1 <- sum2[,1] - qt(0.975, df = sum2[,4]) * sum2[, 2]
 high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
-
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
-
 row1 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
 ### 3.2.2 ICU in last 30 days
@@ -283,14 +258,11 @@ for (i in 1:50) {
 
 
 sum <- summary(pool(modelFit))
-
 sum2 <- sum[2, ]
 est1 <- sum2[,1]
 low_ci1 <- sum2[,1] - qt(0.975, df = sum2[,4]) * sum2[, 2]
 high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
-
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
-
 row2 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
 ### 3.2.3 Enrolled to hospice
@@ -299,17 +271,12 @@ for (i in 1:50) {
   modelFit[[i]] <- glm(enroll ~ clus + age_cat + count + female + race + marital_status + Insurance +
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
-
-
 sum <- summary(pool(modelFit))
-
 sum2 <- sum[2, ]
 est1 <- sum2[,1]
 low_ci1 <- sum2[,1] - qt(0.975, df = sum2[,4]) * sum2[, 2]
 high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
-
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
-
 row3 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
 ### 3.2.4 Chemotherapy in last 14 days
@@ -318,17 +285,12 @@ for (i in 1:50) {
   modelFit[[i]] <- glm(ChemoLast14Days ~ clus + age_cat + count + female + race + marital_status + Insurance +
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
-
-
 sum <- summary(pool(modelFit))
-
 sum2 <- sum[2, ]
 est1 <- sum2[,1]
 low_ci1 <- sum2[,1] - qt(0.975, df = sum2[,4]) * sum2[, 2]
 high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
-
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
-
 row4 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
 ### 3.2.5 Draw forest plot
@@ -339,11 +301,8 @@ tab <- rbind(row1, row2, row3, row4)
 
 rownames(tab) <- c("Inpatient Death", "Admitted to ICU in last 30 days", 
                    "Enrolled to hospice or not","Chemotherapy in last 14 days")
-
 tab[,2:3] <- exp(tab[,2:3])
-
 tab <- as.data.frame(tab)
-
 tab <- tab %>% mutate_at(vars(OR, ll, hl), funs(sprintf('%.2f',.)))
 
 library(forestplot)
