@@ -7,11 +7,9 @@
 R codes/FPCA.R 
 
 Package used: 
-1. _fdapace_ R package (Carroll et al. 2020).  
+1. FPCA: _fdapace_ R package (Carroll et al. 2020).  
 Github source of this package: https://github.com/functionaldata/tPACE
-2. _EMCluster_ R package (Chen & Maitra. 2020). 
-
-
+2. EM Algorithm for Model-Based Clustering: _EMCluster_ R package (Chen & Maitra. 2020). 
 
 ## Tables
 
