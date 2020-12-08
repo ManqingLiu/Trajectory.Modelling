@@ -12,6 +12,9 @@ pred_fpca <- MakeFPCAInputs(pred$PAT_ID, pred$interval, pred$prediction_score)
 ## 3. Run FPCA. Ly is the observed moratlity risks for each patient, Lt is days from each appointment to death corresponding to each Ly
 fpcaObjpred <- FPCA(pred_fpca$Ly, pred_fpca$Lt, list(dataType='Sparse', plot = T, methodMuCovEst = 'smooth'))
 
+## save FPCA object
+save(fpcaOBJpred, file="fpcaOBJ.RData")
+
 ## 4. Selects number of functional principal components for given FPCA output using a FVE threshold of 95%
 SelectK(fpcaObjpred, criterion = 'FVE', FVEthreshold = 0.95) 
 
