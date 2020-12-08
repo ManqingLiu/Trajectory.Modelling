@@ -25,22 +25,16 @@ newClust <- FClust(pred_fpca$Ly, pred_fpca$Lt, k = 2, optnsFPCA =
 library(dplyr)
 
 cluster <- newClust$cluster
-
 pred_id <- pred[c('PAT_ID')]
-
 pred_id <- pred_id %>% distinct(PAT_ID, .keep_all = TRUE)
-
 pred_id$cluster <- cluster
-
 predf <- merge(pred, pred_id, by = "PAT_ID")
-
 predf<- predf %>%
   group_by(cluster) %>%
   mutate(mean_pred = mean(prediction_score))
 
 predf$cluster_c<- with(predf, ifelse(mean_pred > mean(prediction_score), "2nd Cluster",
                                      "1st Cluster"))
-
 save(predf, file = 'predf.Rdata')
 
 
