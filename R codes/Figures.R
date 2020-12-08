@@ -219,12 +219,24 @@ ggplot() +
 load(file = "bl_eol.Rdata")
 
 ## 3.2.1 Run multiple imputation via MICE 
+vars <- c("PAT_AGE", "insurance", "count", "elix_count", "ECOG_strict", "treat_loc")
+impute <- bl_eol[vars]
+
+library(mice)
+tempData <- mice(impute,m=50,maxit=5,meth='pmm',seed=500)
+
+completeD <- complete(tempData, "all")
+
 cols <- c('Cancer', 'race','cluster','treat_loc','female','marital_status','elixhauser_cat','stage',
           'year_death','Insurance','age_cat','InpatientDeath','enroll','IcuLast30Days','ChemoLast14Days')
+
 bl_eol[cols] <- lapply(bl_eol[cols], factor)
+
 vars <- c("cluster",'age_cat','female','race','marital_status','Insurance','elixhauser_cat',
           'stage','year_death','treat_loc','Cancer','InpatientDeath','enroll','IcuLast30Days','ChemoLast14Days')
+
 keep <- bl_eol[vars]
+
 completeD2 = list()
 for (i in 1:50) {
   completeD2[[i]] <- cbind(completeD[[i]], keep)
