@@ -22,4 +22,4 @@ Parikh, R. B. et al. Machine Learning Approaches to Predict 6-Month Mortality Am
 Carroll C. et al. fdapace: Functional Data Analysis and Empirical Dynamics. R package. (2020). version 0.5.3. URL: https://CRAN.R-project.org/package=fdapace  
 Chen, W.C. & Maitra, R. EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package. (2020). URL: https://CRAN.R-project.org/package=EMCluster  
 Buuren, S. & Groothuis-Oudshoorn, K.  mice: Multivariate Imputation by Chained Equations in R. Journal of
-  Statistical Software, 45(3), 1-67. (2011). URL https://www.jstatsoft.org/v45/i03/.
+  Statistical Software, 45(3), 1-67. (2011). URL: https://www.jstatsoft.org/v45/i03/.
