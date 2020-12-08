@@ -15,6 +15,6 @@ Github source of this package: https://github.com/functionaldata/tPACE
 
 
 ## References
-Parikh, R. B. et al. Machine Learning Approaches to Predict 6-Month Mortality Among Patients With Cancer. JAMA Netw Open 2, e1915997 (2019). doi: 10.1001/jamanetworkopen.2019.15997
+Parikh, R. B. et al. Machine Learning Approaches to Predict 6-Month Mortality Among Patients With Cancer. JAMA Netw Open 2, e1915997 (2019). doi: 10.1001/jamanetworkopen.2019.15997  
 Carroll C. et al. fdapace: Functional Data Analysis and Empirical Dynamics. R package. (2020). version 0.5.3. URL: https://CRAN.R-project.org/package=fdapace  
 Chen, W.C. & Maitra, R. EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package. (2020). URL: https://CRAN.R-project.org/package=EMCluster
