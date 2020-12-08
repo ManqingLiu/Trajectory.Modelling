@@ -218,6 +218,7 @@ ggplot() +
 ## load baseline patient characteristics data 
 load(file = "bl_eol.Rdata")
 
+## 3.2.1 Run multiple imputation via MICE for each of the EOL outcome 
 cols <- c('Cancer', 'race','cluster','treat_loc','female','marital_status','elixhauser_cat','stage',
           'year_death','Insurance','age_cat','InpatientDeath','enroll','IcuLast30Days','ChemoLast14Days')
 bl_eol[cols] <- lapply(bl_eol[cols], factor)
@@ -233,7 +234,7 @@ for (i in 1:50) {
   completeD2[[i]]$ECOG_strict_c <- as.factor(completeD2[[i]]$ECOG_strict_c)
 }
 
-### 3.2.1 Inpatient death 
+### Inpatient death 
 modelFit = list()
 for (i in 1:50) {
   modelFit[[i]] <- glm(InpatientDeath ~ clus + age_cat + count + female + race + marital_status + Insurance +
@@ -249,7 +250,7 @@ high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
 row1 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
-### 3.2.2 ICU in last 30 days
+### ICU in last 30 days
 modelFit = list()
 for (i in 1:50) {
   modelFit[[i]] <- glm(IcuLast30Days ~ clus + age_cat + count + female + race + marital_status + Insurance +
@@ -265,7 +266,7 @@ high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
 row2 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
-### 3.2.3 Enrolled to hospice
+### Enrolled to hospice
 modelFit = list()
 for (i in 1:50) {
   modelFit[[i]] <- glm(enroll ~ clus + age_cat + count + female + race + marital_status + Insurance +
@@ -279,7 +280,7 @@ high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
 row3 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
-### 3.2.4 Chemotherapy in last 14 days
+### Chemotherapy in last 14 days
 modelFit = list()
 for (i in 1:50) {
   modelFit[[i]] <- glm(ChemoLast14Days ~ clus + age_cat + count + female + race + marital_status + Insurance +
@@ -293,7 +294,7 @@ high_ci1 <- sum2[,1] + qt(0.975, df = sum2[,4]) * sum2[, 2]
 ci1 <- paste0( "[", round(exp(low_ci1),2), "-", round(exp(high_ci1),2), "]")
 row4 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = round(sum2$p.value,3))
 
-### 3.2.5 Draw forest plot
+### 3.2.2 Draw forest plot using the odds ratios from MI 
 library(knitr)
 library(kableExtra)
 
