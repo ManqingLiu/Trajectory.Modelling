@@ -6,7 +6,7 @@
 ## FPCA analysis 
 R codes/FPCA.R 
 
-Package used: 
+Key packages used: 
 1. FPCA: _fdapace_ R package (Carroll et al. 2020).  
 Github source of this package: https://github.com/functionaldata/tPACE
 2. EM Algorithm for Model-Based Clustering: _EMCluster_ R package (Chen & Maitra. 2020). 
@@ -14,7 +14,7 @@ Github source of this package: https://github.com/functionaldata/tPACE
 ## Figures
 R codes/Figures.R
 
-Package used:  
+Key package used:  
 Multiple Imputation: _mice_ R package (Buuren & Groothuis-Oudshoorn 2011).
 
 ## References
