@@ -1,7 +1,7 @@
 # Trajectory Modelling
 ## Objectives
-1. Identify hidden clusters of longitudinal mortality risks from gradient boosting machine (GBM) algorithm. This algorithm was designed to predict 180-day mortality among outpatients with cancer (Parikh et al. 2019). 
-2. Evaluate the association between identified clusters and End-of-Life care patients received. 
+1. Identify hidden clusters of trajectories of longitudinal mortality risks from gradient boosting machine (GBM) algorithm. This algorithm was designed to predict 180-day mortality among outpatients with cancer (Parikh et al. 2019). 
+2. Evaluate the association between identified trajectories and End-of-Life care patients received. 
 
 ## FPCA analysis 
 R codes/FPCA.R 
