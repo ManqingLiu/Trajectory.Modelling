@@ -16,7 +16,7 @@ fpcaObjpred <- FPCA(pred_fpca$Ly, pred_fpca$Lt, list(dataType='Sparse', plot = T
 SelectK(fpcaObjpred, criterion = 'FVE', FVEthreshold = 0.95) 
 
 ## 5. Cluster functional data using the functional principal component (FPC) scores obtained
-## from the data using EMCluster (Chen and Maitra, 2015)
+## from FPCA via EMCluster (Chen and Maitra, 2015)
 newClust <- FClust(pred_fpca$Ly, pred_fpca$Lt, k = 2, optnsFPCA =
                      list(methodMuCovEst = 'smooth', FVEthreshold = 0.95))
 
