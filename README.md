@@ -12,9 +12,14 @@ Github source of this package: https://github.com/functionaldata/tPACE
 2. EM Algorithm for Model-Based Clustering: _EMCluster_ R package (Chen & Maitra. 2020). 
 
 ## Figures
+R codes/Figures.R
 
+Package used:
+Multiple Imputation: _mice_ R package (Buuren & Groothuis-Oudshoorn 2011).
 
 ## References
 Parikh, R. B. et al. Machine Learning Approaches to Predict 6-Month Mortality Among Patients With Cancer. JAMA Netw Open 2, e1915997 (2019). doi: 10.1001/jamanetworkopen.2019.15997  
 Carroll C. et al. fdapace: Functional Data Analysis and Empirical Dynamics. R package. (2020). version 0.5.3. URL: https://CRAN.R-project.org/package=fdapace  
-Chen, W.C. & Maitra, R. EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package. (2020). URL: https://CRAN.R-project.org/package=EMCluster
+Chen, W.C. & Maitra, R. EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package. (2020). URL: https://CRAN.R-project.org/package=EMCluster  
+Buuren, S. & Groothuis-Oudshoorn, K.  mice: Multivariate Imputation by Chained Equations in R. Journal of
+  Statistical Software, 45(3), 1-67. (2011). URL https://www.jstatsoft.org/v45/i03/.
