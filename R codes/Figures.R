@@ -250,7 +250,7 @@ for (i in 1:50) {
 ### Inpatient death 
 modelFit = list()
 for (i in 1:50) {
-  modelFit[[i]] <- glm(InpatientDeath ~ clus + age_cat + count + female + race + marital_status + Insurance +
+  modelFit[[i]] <- glm(InpatientDeath ~ cluster + age_cat + count + female + race + marital_status + Insurance +
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
 
@@ -266,7 +266,7 @@ row1 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = roun
 ### ICU in last 30 days
 modelFit = list()
 for (i in 1:50) {
-  modelFit[[i]] <- glm(IcuLast30Days ~ clus + age_cat + count + female + race + marital_status + Insurance +
+  modelFit[[i]] <- glm(IcuLast30Days ~ cluster + age_cat + count + female + race + marital_status + Insurance +
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
 
@@ -282,7 +282,7 @@ row2 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = roun
 ### Enrolled to hospice
 modelFit = list()
 for (i in 1:50) {
-  modelFit[[i]] <- glm(enroll ~ clus + age_cat + count + female + race + marital_status + Insurance +
+  modelFit[[i]] <- glm(enroll ~ cluster + age_cat + count + female + race + marital_status + Insurance +
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
 sum <- summary(pool(modelFit))
@@ -296,7 +296,7 @@ row3 <- cbind('OR' = exp(est1), 'll' = low_ci1, 'hl' =high_ci1, 'P Value' = roun
 ### Chemotherapy in last 14 days
 modelFit = list()
 for (i in 1:50) {
-  modelFit[[i]] <- glm(ChemoLast14Days ~ clus + age_cat + count + female + race + marital_status + Insurance +
+  modelFit[[i]] <- glm(ChemoLast14Days ~ cluster + age_cat + count + female + race + marital_status + Insurance +
                          elixhauser_cat + ECOG_strict_c + stage + year_death+treat_loc+Cancer, data = completeD2[[i]], family = "binomial")
 }
 sum <- summary(pool(modelFit))
