@@ -14,7 +14,7 @@ Github source of this package: https://github.com/functionaldata/tPACE
 ## Figures
 R codes/Figures.R
 
-![Figure1AB](https://github.com/ManqingLiu/Trajectory.Modelling/tree/main/Figures/Figure1AB.png)
+![Figure1AB](https://github.com/ManqingLiu/Trajectory.Modelling/tree/main/Figures/Figure1AB-aaai.png)
 
 
 
