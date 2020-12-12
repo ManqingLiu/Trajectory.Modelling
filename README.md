@@ -14,7 +14,8 @@ Github source of this package: https://github.com/functionaldata/tPACE
 ## Figures
 R codes/Figures.R
 
-![plot](./Users/manqi/Box/Prospective Validation Algorithm/Trajectory Modelling/Results/Figure1EF.png)
+![Figure1EF](https://octodex.github.com/images/yaktocat.png)
+
 
 Key package used:  
 Multiple Imputation: _mice_ R package (Buuren & Groothuis-Oudshoorn 2011).
