@@ -14,7 +14,8 @@ Github source of this package: https://github.com/functionaldata/tPACE
 ## Figures
 R codes/Figures.R
 
-![Figure1EF](https://octodex.github.com/images/yaktocat.png)
+![Figure1EF](https://github.com/ManqingLiu/Trajectory.Modelling/tree/main/Figures/Figure1AB.png)
+
 
 
 Key package used:  
