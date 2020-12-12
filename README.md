@@ -14,11 +14,7 @@ Github source of this package: https://github.com/functionaldata/tPACE
 ## Figures
 R codes/Figures.R
 
-![Figure1AB](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1AB.png)
-![Figure1CD](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1CD.png)
 ![Figure1EF](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1EF.png)
-![Figure1G](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1G.jpg)
-![Figure2](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure2.jpg)
 
 Key package used:  
 1. FPCA: _fdapace_ R package (Carroll et al. 2020).  
