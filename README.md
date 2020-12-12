@@ -15,11 +15,16 @@ Github source of this package: https://github.com/functionaldata/tPACE
 R codes/Figures.R
 
 ![Figure1AB](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1AB.png)
-
-
+![Figure1CD](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1CD.png)
+![Figure1EF](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1EF.png)
+![Figure1G](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure1G.png)
+![Figure2](https://github.com/ManqingLiu/Trajectory.Modelling/blob/main/Figures/Figure2.png)
 
 Key package used:  
-Multiple Imputation: _mice_ R package (Buuren & Groothuis-Oudshoorn 2011).
+1. FPCA: _fdapace_ R package (Carroll et al. 2020).  
+Github source of this package: https://github.com/functionaldata/tPACE
+2. EM Algorithm for Model-Based Clustering: _EMCluster_ R package (Chen & Maitra. 2020). 
+3. Multiple Imputation: _mice_ R package (Buuren & Groothuis-Oudshoorn 2011).
 
 ## References
 Parikh, R. B. et al. Machine Learning Approaches to Predict 6-Month Mortality Among Patients With Cancer. JAMA Netw Open 2, e1915997 (2019). doi: 10.1001/jamanetworkopen.2019.15997  
